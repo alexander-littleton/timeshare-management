@@ -1,3 +1,2 @@
-# go-htmx-project
-
-A simple dynamic calendar implementation using Go, Tailwind, Templ, and HTMX
+# timeshare-management
+Trying to stay strict with "Accept interfaces, return structs"

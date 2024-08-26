@@ -1,0 +1,16 @@
+package pages
+
+templ DashboardPage() {
+    <title>Timeshare Dashboard</title>
+    <div class="flex flex-col gap-8 padding-8" id="dashboard">
+        @scheduleCard()
+        @scheduleCard()
+    </div>
+}
+
+
+templ scheduleCard() {
+    <div class="flex flex-col gap-3 padding-8 border-2">
+        <h1 class="text-xl">Wed Oct 8, 2024 - Tuesday Oct 14, 2024</h1>
+    </div>
+}

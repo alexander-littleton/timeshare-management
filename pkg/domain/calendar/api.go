@@ -10,16 +10,6 @@ import (
 	"github.com/alexander-littleton/go-htmx-project/pkg/domain/calendar/pages"
 )
 
-type CalendarController interface {
-	getCalendar(w http.ResponseWriter, req *http.Request)
-	getBookingForm(w http.ResponseWriter, req *http.Request)
-}
-
-func InitRoutes(mux *http.ServeMux, controller CalendarController) {
-	mux.HandleFunc("GET /calendar", controller.getCalendar)
-	mux.HandleFunc("GET /bookingForm", controller.getBookingForm)
-}
-
 type CalendarService interface {
 	GetCalendar(ctx context.Context, month, year int) (Calendar, error)
 }
@@ -34,7 +24,7 @@ func NewController(calendarService CalendarService) Controller {
 	}
 }
 
-func (c Controller) getCalendar(w http.ResponseWriter, req *http.Request) {
+func (c Controller) GetCalendar(w http.ResponseWriter, req *http.Request) {
 	monthYear := req.URL.Query().Get("monthYear")
 	split := strings.Split(monthYear, "-")
 	month, err := strconv.Atoi(split[0])
@@ -59,6 +49,6 @@ func (c Controller) getCalendar(w http.ResponseWriter, req *http.Request) {
 	pages.Calendar(month, year, calendar.String(), selectedDay).Render(ctx, w)
 }
 
-func (c Controller) getBookingForm(w http.ResponseWriter, req *http.Request) {
+func (c Controller) GetBookingForm(w http.ResponseWriter, req *http.Request) {
 
 }
